@@ -57,6 +57,14 @@ contract Fundraiser{
         }
     }
 
+    function transferFunds(address ethAddress) payable public isAdmin{
+        payable(ethAddress).transfer(address(this).balance);
+    }
+
+    function checkContractBalance() public view returns (uint){
+        return address(this).balance;
+    }
+
     function checkGoal() public returns(uint256){
         emitGoalReached();
         return goal;
